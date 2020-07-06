@@ -8,6 +8,6 @@ module.exports = app => {
     app.use('/', require('./index.routes'))
     app.use('/', require('./auth.routes'))
     app.use('/', require('./roles.routes'))
-    app.use('/asociacion', checkRole(['ASSOCIATIONS', 'ADMIN']), require('./assprivatearea.routes'))
+    app.use('/asociacion', checkRole(['RESCUE', 'ADMIN']), require('./assprivatearea.routes'))
     app.use('/guest', checkRole(['GUEST', 'ADMIN']), require('./guestprivatearea.routes'))
 }

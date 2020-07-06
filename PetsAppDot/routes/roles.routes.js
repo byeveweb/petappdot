@@ -33,7 +33,7 @@ router.get('/', (req, res) => {
 
 
 //Check logged in session & roles
-router.get('/rooms', checkRole(['GUEST', 'ASSOCIATIONS', 'ADMIN']), (req, res) => res.send('AQUÍ VAN LAS HABITACIONES PARA GUEST'))
+router.get('/rooms', checkRole(['GUEST', 'RESCUE', 'ADMIN']), (req, res) => res.send('AQUÍ VAN LAS HABITACIONES PARA GUEST'))
 router.get('/edit-rooms', checkRole(['ADMIN', 'EDITOR']), (req, res) => res.send('AQUÍ VAN TUS HABITACIONES PARA EDITOR'))
 router.get('/all-rooms', checkRole(['ADMIN']), (req, res) => res.send('AQUÍ VAN TODAS LAS HABITACIONES PARA ADMIN'))
 
