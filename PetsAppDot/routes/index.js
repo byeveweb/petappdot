@@ -5,4 +5,5 @@ module.exports = app => {
     app.use('/', require('./auth.routes'))
     app.use('/', require('./roles.routes'))
     app.use('/', require('./assprivatearea.routes'))
+    
 }
