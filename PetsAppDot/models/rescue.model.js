@@ -2,12 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const rescueSchema = new Schema({
-    name: String,
-    description: String,
-    email: String,
-    password: String,
-    logo: String, 
-    location: String
+    name: { type: String },
+    rescueOtherId: {type: Schema.Types.ObjectId, ref: 'user'},
+    description: { type: String },
+    logo: { type: String }, 
+    location: { type: String }
 }, {
     timestamps: true
 })
