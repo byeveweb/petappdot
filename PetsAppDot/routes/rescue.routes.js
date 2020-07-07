@@ -1,23 +1,23 @@
 const express = require('express')
 const router = express.Router()
 const Pet = require('../models/adopter.model')//añadida aqui tambien
-const Association = require('../models/association.model')
+const Rescue = require('../models/rescue.model')
 
-//Muestra el listado de asociaciones inscritas
+//Muestra el listado de asociaciones/rescue inscritas
 
 router.get('/', (req, res, next) => {
-    Association.find()
+    Rescue.find()
         //.populate('Pet')
-        .then(allAssociations => res.render('publics/list-associations', {allAssociations}))
+        .then(allRescues => res.render('publics/list-rescue', {allRescues}))
         .catch(err => next(new Error(err)))
 })
 
-//Ficha de la asociación consultada :id
+//Ficha de la asociación/rescue consultada :id
 
 router.get('/:id', (req, res, next) => {
-    Association.findById(req.params.id)
+    Rescue.findById(req.params.id)
         .populate('Pet')
-        .then(theAssociation => res.render('publics/association-details', {theAssociation}))
+        .then(theRescue => res.render('publics/rescue-details', {theRescue}))
         .catch(err => next(new Error(err)))
 })
 
@@ -25,7 +25,7 @@ router.get('/:id', (req, res, next) => {
 
 router.get('/', (req, res, next) => {
     Pet.find()
-        .populate('association')
+        .populate('rescue')
         .then(allPets => res.render('publics/list-animals', {allPets}))
         .catch(err => next(new Error(err)))
 })

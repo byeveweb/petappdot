@@ -1,13 +1,13 @@
 const express = require('express')
 const router = express.Router()
 const Pet = require('../models/adopter.model')
-const Association = require('../models/association.model')
+const Rescue = require('../models/rescue.model')
 
 //Muestra el listado de las mascotas inscritas --GET
 
 router.get('/', (req, res, next) => {
     Pet.find()
-        .populate('association') // nombre de la propiedad a popular del modelo actual
+        .populate('rescue') // nombre de la propiedad a popular del modelo actual
         .then(allPets => res.render('publics/list-animals', {allPets}))
         .catch(err => next(new Error(err)))
 })
@@ -16,18 +16,18 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
     Pet.findById(req.params.id)
-        .populate('association')
+        .populate('rescue')
         .then(thePet => res.render('publics/animal-details', {thePet}))
         .catch(err => next(new Error(err)))
 })
 
 //Guarda en la BBDD una asociación --POST
 
-router.post('/signup-associations', (req, res) => {
+router.post('/signup-rescue', (req, res) => {
 
-    const { name, description, email, password, logo, owner } = req.body
+    const { name, description, email, password, logo, location } = req.body
     
-    Association.create({ name, description, email, password, logo, owner})
+    Rescue.create({ name, description, email, password, logo, location})
         .then(() => res.redirect('/'))
         .catch(err => next(new Error(err)))
 })

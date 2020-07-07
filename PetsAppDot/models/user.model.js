@@ -2,15 +2,14 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
-    name: String,
     avatar: String,
     phone: Number,
     username: String,
     password: String,
+    adress: String,
     role: {
         type: String,
-        enum: ["GUEST", "ASSOCIATION", "ADMIN"],
-        default: "GUEST",
+        enum: ["ADOPTER", "RESCUE", "ADMIN" ],
     },
 }, {
     timestamps: true

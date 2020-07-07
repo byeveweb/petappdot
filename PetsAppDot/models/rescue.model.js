@@ -1,16 +1,17 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const associationSchema = new Schema({
+const rescueSchema = new Schema({
     name: String,
     description: String,
     email: String,
     password: String,
-    logo: String, //(get : v => `${root} ${v})
+    logo: String, 
+    location: String
 }, {
     timestamps: true
 })
 
-const Association = mongoose.model("Association", associationSchema)
+const rescue = mongoose.model("Rescue", rescueSchema)
 
-module.exports = Association
+module.exports = rescue

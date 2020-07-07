@@ -3,6 +3,6 @@ const router = express.Router();
 const passport = require("passport");
 
 
-router.get("/associations", (req, res) => res.send("asociaciones"))
+router.get("/rescue", (req, res) => res.send("rescues"))
 
 module.exports = router;
