@@ -2,19 +2,22 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 
-const User = require("../models/user.model")
+const User = require("./user.model")
 
-const associationSchema = new Schema({
+const rescueSchema = new Schema({
     name: String,
     description: String,
     email: String,
     password: String,
     logo: String, //(get : v => `${root} ${v})
-    owner: UserSchema
+    user_id: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 }, {
     timestamps: true
 })
 
-const Association = mongoose.model("Association", associationSchema)
+const Rescue = mongoose.model("Rescue", rescueSchema)
 
-module.exports = Association
+module.exports = rescue

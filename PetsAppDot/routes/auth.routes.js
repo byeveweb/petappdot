@@ -15,6 +15,10 @@ router.post("/signup", (req, res, next) => {
     const {
         username,
         password,
+        name,
+        email,
+        phone,
+        role
     } = req.body
 
     if (!username || !password) {
@@ -41,6 +45,9 @@ router.post("/signup", (req, res, next) => {
             User.create({
                     username,
                     password: hashPass,
+                    name,
+                    email,
+                    phone,
                     role
                 })
                 .then(() => res.redirect("/"))
@@ -56,13 +63,23 @@ router.post("/signup", (req, res, next) => {
 router.get('/login', (req, res) => res.render('auth/login', {
     "errorMsg": req.flash("error")
 }))
+// router.post('/login', passport.authenticate("local", {
+//     successRedirect: "/",
+//     failureRedirect: "/login",
+//     failureFlash: true,
+//     passReqToCallback: true,
+//     badRequestMessage: 'Rellena todos los campos'
+// }))
+
 router.post('/login', passport.authenticate("local", {
+
     successRedirect: "/",
     failureRedirect: "/login",
     failureFlash: true,
     passReqToCallback: true,
     badRequestMessage: 'Rellena todos los campos'
 }))
+
 
 
 // User logout
