@@ -1,1 +1,34 @@
-guest profile edit
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 style="font-weight: 100">Editar perfil</h1>
+        </div>
+        <div class="col-md-6">
+            <form action="/adopter/profile/{{allUser._id}}" method="POST">
+                {{#with allUser}}
+                <div class="form-group">
+                    <label for="field1">Nombre de usuario</label>
+                    <input name="username" type="text" class="form-control" id="field1" placeholder="{{username}}">
+                </div>
+                <div class="form-group">
+                    <label for="field4">E-mail</label>
+                    <input name="email" type="text" class="form-control" id="field4" placeholder="{{email}}">
+                </div>
+                <div class="form-group">
+                    <label for="field5">Teléfono</label>
+                    <input name="phone" type="text" class="form-control" id="field5" placeholder="{{phone}}">
+                </div>
+
+
+                {{/with}}
+                <button type="submit" class="btn btn-dark btn-block btn-lg">Guardar</button>
+
+                {{#if errorMsg}}
+                <div id="errorMsg">{{{errorMsg}}}</div>
+                {{/if}}
+            </form>
+
+            <a href="/adopter/profile" class="btn btn-dark">Volver</a>
+
+        </div>
+    </div>

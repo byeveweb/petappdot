@@ -14,10 +14,6 @@ router.get("/profile", (req, res, next) => {
         })
         .catch((err) => console.log("Error en list guest", err));
 
-    // res.send("adopter/profile",
-    //     sessUser,
-    // );
-
 });
 
 
@@ -30,15 +26,9 @@ router.get("/profile/:id", (req, res) => {
             });
         })
         .catch((err) => console.log("Error en list guest", err));
-
-    // res.render('basicRoutes/guest-profile')
 });
 
 
 
-
-//Edit profile
-// router.get('/profile/edit', (req, res) => res.render('adopter/profile-edit'))
-// router.post('/profile/edit', (req, res) => res.render('adopter/profile-edit'))
 
 module.exports = router;

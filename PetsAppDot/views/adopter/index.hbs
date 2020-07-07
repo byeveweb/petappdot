@@ -2,11 +2,15 @@ Ver tu perfil
 {{!-- {{allUser}} --}}
 {{!-- hola: {{id}}
 <a href="/profile/{{_id}}">Ver tu perfil</a> --}}
+{{#with allUser}}
+Id: {{_id}}<br>
+username: {{username}}<br>
+email {{email}}<br>
+phone: {{phone}}<br>
+role: {{role}}<br>
+creado: {{createdAt}}<br>
+update: {{updatedAt}}<br>
 
-Id: {{allUser._id}}<br>
-username: {{allUser.username}}<br>
-email {{allUser.email}}<br>
-phone: {{allUser.phone}}<br>
-role: {{allUser.role}}<br>
-creado: {{allUser.createdAt}}<br>
-update: {{allUser.updatedAt}}<br>
+{{/with}}
+
+<a href="profile/{{allUser._id}}">Edit profile</a>
