@@ -3,17 +3,19 @@ const Schema = mongoose.Schema;
 
 const petSchema = new Schema({
     
-    rescueId: { type: String },
+    rescueId: { type: Schema.Types.ObjectId, ref: 'rescue' },
     virtualChip: { type: String }, // ojo el match: /[A-Z]{2}\d{4}/
     typeAnimal: {type: String},
     race: { type: String},
-    genre: { type: String }, //enum:[ "male", "female" ], 
-    age: { type: String }, //number
-    dateBorn: { type: String }, //date
+    genre: {
+        type: String,
+        enum: ["male", "female"]
+        },
+    age: { type: Number }, 
+    dateBorn: { type: Date },
     description: { type: String }, 
-    sterilized: { type: String}, //Boolean, default: true 
-    //galleryImages: { type: String } //array
-    //owner, referencia al usuario
+    sterilized: { type: Boolean, default: true}, 
+    galleryImages: { type: [String] }, 
     
 }, {
     timestamps: true

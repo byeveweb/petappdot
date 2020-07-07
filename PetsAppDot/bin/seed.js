@@ -13,27 +13,28 @@ User.collection.drop()
 
 const rescues = [
     {
+        rescueOtherId: '5f04a318d78952672545a72c',
         name: "Perretes a GoGooo",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        email: "agcabrero3@gmail.com",
-        password: "123",
-        logo: true,
+        description: 'waao',
+        logo: '..',
         location: "allí"
-    }   
+    }  
+
 ]
 
 const pets = [
     {
-        RescueId: "...",
+        rescueId: '5f04a318d78952672545a72a',
         virtualChip: "...",
-        type: "reptile",
-        race: "..",
+        typeAnimal: "reptile",
+        race: '.',
         genre: "male",
         age: 22,
-        dateBorn: "....",
+        dateBorn: '1991-01-21',
         description: "amazing reptil",
-        Sterilized: "..",
-        GalleryImages: "..."          
+        Sterilized: true,
+        GalleryImages: "...", 
+      
 },
 ]
 
@@ -49,23 +50,20 @@ const users = [
 ]
 
 
-Rescue
-    .create(rescues)
+Rescue.create(rescues)
     .then(allRescues => {
     console.log(`created ${allRescues.length} rescues`)
     mongoose.connection.close()})
     .catch(err => console.log('eroor en la BBD', err))
 
 
-Pet
-    .create(pets)
+Pet.create(pets)
     .then(allPets => {console.log(`created ${allPets.length} pets`)
     mongoose.connection.close()})
     .catch(err => console.log('eroor en la BBD', err))
 
 
-User
-    .create(users)
+User.create(users)
     .then(allUsers => {console.log(`created ${allUsers.length} users`)
     mongoose.connection.close() })
     .catch(err => console.log('eroor en la BBD', err))

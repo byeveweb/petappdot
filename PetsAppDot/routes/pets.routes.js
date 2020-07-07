@@ -3,6 +3,19 @@ const router = express.Router()
 const Pet = require('../models/adopter.model')
 const Rescue = require('../models/rescue.model')
 
+
+// Con respecto al tema de owner, la propiedad
+// owner en cada item donde almacenar el ObjectId de su owner
+// permite renderizar en una vista únicamente los items
+// asociados al owner:
+
+// Item.find({owner: req.user._id})
+//     .then(itemsOwnedByUser => res.render('items-index', {itemsOwnedByUser})
+
+
+
+
+
 //Muestra el listado de las mascotas inscritas --GET
 
 router.get('/', (req, res, next) => {
