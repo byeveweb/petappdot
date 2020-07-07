@@ -4,11 +4,8 @@ const { create } = require('../models/rescue.model')
 const Pet = require('../models/pet.model')
 const User = require('../models/user.model')
 
-const dbtitle = 'animal-adopt'
-mongoose.connect(`mongodb://localhost/${dbtitle}`, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-})
+const Guest = require('../models/guest.model');
+const User = require('../models/user.model');
 
 Rescue.collection.drop()
 Pet.collection.drop()

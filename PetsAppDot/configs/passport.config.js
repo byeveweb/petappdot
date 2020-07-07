@@ -25,17 +25,26 @@ module.exports = app => {
 
     app.use(flash())
 
-    passport.use(new LocalStrategy({ passReqToCallback: true }, (req, username, password, next) => {
-        User.findOne({ username })
+    passport.use(new LocalStrategy({
+        passReqToCallback: true
+    }, (req, username, password, next) => {
+        User.findOne({
+                username
+            })
             .then(user => {
                 if (!user) {
-                    return next(null, false, { message: "Nombre de usuario incorrecto" })
+                    return next(null, false, {
+                        message: "Nombre de usuario incorrecto"
+                    })
                 }
                 if (!bcrypt.compareSync(password, user.password)) {
-                    return next(null, false, { message: "Contraseña incorrecta" })
+                    return next(null, false, {
+                        message: "Contraseña incorrecta"
+                    })
                 }
                 return next(null, user)
             })
+
             .catch(err => next(err))
     }))
 
