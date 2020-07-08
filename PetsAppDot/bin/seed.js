@@ -10,45 +10,60 @@ mongoose.connect(`mongodb://localhost/petappdot`)
 
 
 const rescues = [{
-        rescueOtherId: '5f03709162b23c48a2407e05',
-        name: "Perretes a GoGooo",
-        description: 'waao',
+        userId: '5f03709162b23c48a2407e05',
+        name: "Gatetes a GoGooo",
+        description: 'miauuuu',
         logo: '..',
         location: "allí"
-    }
+    },
+    {
+        userId: '5f03709162b23c48a2407e05',
+        name: "Perretes a GoGooo",
+        description: 'waoo',
+        logo: '..',
+        location: "allí"
+    },
 
 ]
 
 const pets = [{
-    rescueId: '5f04a318d78952672545a72a',
-    virtualChip: "...",
-    typeAnimal: "reptile",
-    race: '.',
-    genre: "male",
-    age: 22,
-    dateBorn: '1991-01-21',
-    description: "amazing reptil",
-    Sterilized: true,
-    GalleryImages: "...",
+        rescueId: '5f060d148cfe2a76736b87fe',
+        virtualChip: "VC0000000000000001",
+        name: 'Bob',
+        typeAnimal: "dog",
+        race: 'fcomun',
+        genre: "male",
+        age: 22,
+        dateBorn: '1991-01-21',
+        description: "Lore ipsum",
+        Sterilized: true,
+        GalleryImages: "...",
 
-}, ]
+    },
+    {
+        rescueId: '5f060d148cfe2a76736b87fe',
+        virtualChip: "VC0000000000000003",
+        name: 'Mon',
+        typeAnimal: "cat",
+        race: 'european comun',
+        genre: "female",
+        age: 22,
+        dateBorn: '1991-01-21',
+        description: "Lore ipsum",
+        Sterilized: false,
+        GalleryImages: "...",
 
-const users = [{
-    name: 'Alvaro',
-    avatar: 'https://i.ytimg.com/vi/eqNLfy7aGMk/maxresdefault.jpg',
-    phone: 444444447,
-    username: 'Armando Adistancia',
-    password: 321,
-    role: "ADOPTER"
-}, ]
+    },
+]
 
 
-Rescue.create(rescues)
-    .then(allRescues => {
-        console.log(`created ${allRescues.length} rescues`)
-        mongoose.connection.close()
-    })
-    .catch(err => console.log('eroor en la BBD', err))
+
+// Rescue.create(rescues)
+//     .then(allRescues => {
+//         console.log(`created ${allRescues.length} rescues`)
+//         mongoose.connection.close()
+//     })
+//     .catch(err => console.log('eroor en la BBD', err))
 
 
 Pet.create(pets)
@@ -59,12 +74,12 @@ Pet.create(pets)
     .catch(err => console.log('eroor en la BBD', err))
 
 
-User.create(users)
-    .then(allUsers => {
-        console.log(`created ${allUsers.length} users`)
-        mongoose.connection.close()
-    })
-    .catch(err => console.log('eroor en la BBD', err))
+// User.create(users)
+//     .then(allUsers => {
+//         console.log(`created ${allUsers.length} users`)
+//         mongoose.connection.close()
+//     })
+//     .catch(err => console.log('eroor en la BBD', err))
 
 
 

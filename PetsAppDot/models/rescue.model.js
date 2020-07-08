@@ -8,7 +8,7 @@ const rescueSchema = new Schema({
     name: {
         type: String
     },
-    rescueOtherId: {
+    userId: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },

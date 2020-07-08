@@ -38,8 +38,12 @@ router.post('/profile/edit', (req, res) => res.send('edit profile RESCUE'))
 //Rescue-Profile
 // router.get('/profile-rescue', (req, res) => res.render('rescue/profile-rescue'))
 router.get('/profile-rescue', (req, res, next) => {
-    Rescue.find()
-        // .populate('rescueOtherId')
+    const sessUser = req.session.passport.user
+    // res.send(sessUser)
+    Rescue.find({
+            'userId': sessUser
+        })
+        // .populate('userId')
         .then(allRescue => res.render('rescue/profile-rescue', {
             allRescue
         }))
@@ -56,9 +60,33 @@ router.get('/rescue-new', (req, res) => {
         .catch(err => console.log("Error traer listado theParklist", err))
 })
 
+router.post('/rescue-new', (req, res, next) => {
+    const sessUser = req.user
+    const {
+        name,
+        description,
+        logo,
+        location
+
+    } = req.body
+
+    Rescue.create({
+            name,
+            description,
+            logo,
+            location,
+            userId: sessUser
+        })
+        .then(() => res.redirect('profile-rescue'))
+        .catch(err => next(new Error(err)))
+})
+
+
+
+
+
 
 //Rescue-Profile Edit
-// router.get('/profile-rescue-edit', (req, res) => res.send('edit perfil de rescue'))
 router.get('/editrescue', (req, res) => {
     Rescue.findById(req.query.id)
         .then(theRescue => res.render('rescue/profile-rescue-edit', {
@@ -66,14 +94,19 @@ router.get('/editrescue', (req, res) => {
         }))
         .catch(err => next(new Error(err)))
 })
+
 router.post('/profile-rescue-edit', (req, res) => res.send('edit perfil de rescue'))
 
 
-
 // List animals
-router.get('/pet-list-rescue', (req, res, next) => {
-    Pet.find()
-        .then((allPet) => {
+router.get('/pet-list-rescue', (req, res) => {
+    const rescueUser = req.query.id
+    // res.send(rescueUser)
+    Pet.find({
+            'rescueId': rescueUser
+        })
+        .populate("rescueId")
+        .then(allPet => {
             res.render("rescue/pet-list-rescue", {
                 allPet,
             });
@@ -82,20 +115,16 @@ router.get('/pet-list-rescue', (req, res, next) => {
 });
 
 
-
-
-
 // New animal
 router.get('/pet-new', (req, res) => {
     Pet.find()
-        //  .populate('Park')
         .then(thePet => res.render('rescue/pet-new', {
             thePet
         }))
         .catch(err => console.log("Error traer listado theParklist", err))
 })
 
-router.post('/pet-new', (req, res) => {
+router.post('/pet-new', (req, res, next) => {
     const {
         typeAnimal,
         race,
@@ -104,7 +133,8 @@ router.post('/pet-new', (req, res) => {
         dateBorn,
         description,
         sterilized,
-        galleryImages
+        galleryImages,
+        rescueId
     } = req.body
 
     Pet.create({
@@ -117,9 +147,7 @@ router.post('/pet-new', (req, res) => {
             sterilized,
             galleryImages
         })
-        .then(thePet => res.render('rescue/pet-new', {
-            thePet
-        }))
+        .then(() => res.redirect('pet-list-rescue'))
         .catch(err => next(new Error(err)))
 })
 
