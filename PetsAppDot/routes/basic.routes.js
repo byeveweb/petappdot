@@ -62,9 +62,9 @@ router.get('/rescue-view/:id', (req, res, next) => {
 
 
 
-router.get('/pet-list-rescue', (req, res, next) => {
-    Pet.find({ }, {rescueId: req.params.id})
-        .then((allPets) => res.render('basicRoutes/list-pets', {allPets}))
+router.get('/pet-list-rescue/:id', (req, res, next) => {
+    Pet.find({}, {rescueId: req.params.id})
+        .then((allPets) => res.render('basicRoutes/list-pets', {allPets}, {rescueId}))
         .catch(err => next(new Error(err)))
 })
 
