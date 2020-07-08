@@ -24,9 +24,15 @@ router.get("/profile", (req, res, next) => {
 });
 
 //Edit profile
-router.get('/profile/:id', (req, res) => res.send('edit profile RESCUE'))
+// router.get('/profile/:id', (req, res) => res.send('edit profile RESCUE'))
+router.get('/editprofile', (req, res) => {
+    Rescue.findById(req.query.id)
+        .then(theRescue => res.render('rescue/user-profile-edit', {
+            theRescue
+        }))
+        .catch(err => next(new Error(err)))
+})
 router.post('/profile/edit', (req, res) => res.send('edit profile RESCUE'))
-
 
 
 //Rescue-Profile
@@ -40,19 +46,26 @@ router.get('/profile-rescue', (req, res, next) => {
 });
 
 
+//Rescue-Profile New
+router.get('/rescue-new', (req, res) => {
+    Rescue.find()
+        //  .populate('Park')
+        .then(theRescue => res.render('rescue/profile-rescue-new', {
+            theRescue
+        }))
+        .catch(err => console.log("Error traer listado theParklist", err))
+})
+
 
 //Rescue-Profile Edit
 // router.get('/profile-rescue-edit', (req, res) => res.send('edit perfil de rescue'))
-router.get('/profile-rescue-edit/:id', (req, res, next) => {
-    Rescue.findById(req.params.id)
-        .then((allRescue) => {
-            res.render("rescue/profile-rescue-edit", {
-                allRescue,
-            });
-        })
-        .catch((err) => console.log("Error en list guest", err));
-});
-
+router.get('/editrescue', (req, res) => {
+    Rescue.findById(req.query.id)
+        .then(theRescue => res.render('rescue/profile-rescue-edit', {
+            theRescue
+        }))
+        .catch(err => next(new Error(err)))
+})
 router.post('/profile-rescue-edit', (req, res) => res.send('edit perfil de rescue'))
 
 
@@ -69,53 +82,58 @@ router.get('/pet-list-rescue', (req, res, next) => {
 });
 
 
-// New animal
-// router.get('/pet-new', (req, res) => res.render('rescue/pet-new'))
 
+
+
+// New animal
 router.get('/pet-new', (req, res) => {
+    Pet.find()
+        //  .populate('Park')
+        .then(thePet => res.render('rescue/pet-new', {
+            thePet
+        }))
+        .catch(err => console.log("Error traer listado theParklist", err))
+})
+
+router.post('/pet-new', (req, res) => {
     const {
         typeAnimal,
         race,
         genre,
-        length,
-        park
+        age,
+        dateBorn,
+        description,
+        sterilized,
+        galleryImages
     } = req.body
 
-    Coaster.create({
-            name,
+    Pet.create({
+            typeAnimal,
+            race,
+            genre,
+            age,
+            dateBorn,
             description,
-            inversions,
-            length,
-            park_id: park
+            sterilized,
+            galleryImages
         })
-        .then(() => res.redirect('/coasters'))
+        .then(thePet => res.render('rescue/pet-new', {
+            thePet
+        }))
         .catch(err => next(new Error(err)))
 })
 
 
-// {{!-- ID: {{_id}}<br>
-//         RescueId: {{rescueId}}<br>
-//         VirualChip: {{virtualChip}}<br>
-//         Type: {{typeAnimal}}<br>
-//         Race: {{race}} <br>
-//         Genre: {{genre}} <br>
-//         Age: {{age}} <br>
-//         Born: {{dateBorn}} <br>
-//         description: {{description}} <br>
-//         Sterilice: {{sterilized}} <br>
-// galery: {{galleryImages}} <br> --}}
 
 
 
 
-
-router.post('/pet-new', (req, res) => res.send('FORM de alta para pet'))
 
 
 // View animal
 router.get('/pet-view/:id', (req, res) => {
     Pet.findById(req.params.id)
-        .populate('park_id')
+        // .populate('park_id')
         .then(thePet => res.render('rescue/pet-view', {
             thePet
         }))
@@ -125,11 +143,23 @@ router.get('/pet-view/:id', (req, res) => {
 
 
 // Edit animal
-router.get('/pet-edit', (req, res) => res.render('rescue/pet-edit'))
+// router.get('/pet-edit', (req, res) => res.render('rescue/pet-edit'))
+router.get('/edit', (req, res) => {
+    Pet.findById(req.query.id)
+        .then(thePet => res.render('rescue/pet-edit', {
+            thePet
+        }))
+        .catch(err => next(new Error(err)))
+})
 router.post('/pet-edit', (req, res) => res.send('FORM de edición para el pet'))
 
 // Delete animals
-router.get('/pet-delete', (req, res) => res.send('FORM de baja para pet'))
+// router.get('/pet-delete', (req, res) => res.send('FORM de baja para pet'))
+router.get('/delete', (req, res, next) => {
+    Pet.findByIdAndDelete(req.query.id)
+        .then(() => res.redirect('pet-list-rescue'))
+        .catch(err => next(new Error(err)))
+})
 
 
 

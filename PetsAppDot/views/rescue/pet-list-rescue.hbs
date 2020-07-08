@@ -5,9 +5,9 @@
 {{#each allPet}}
 <div class="col-md-12 col-sm-12">
     <div class="verticleilist listing-shot">
-        ID: {{name}}<br>
-        RescueId: {{rescueOtherId}}<br>
-        VirualChip: {{description}}<br>
+        ID: {{_id}}<br>
+        RescueId: {{rescueId}}<br>
+        VirualChip: {{virtualChip}}<br>
         Type: {{typeAnimal}}<br>
         Race: {{race}} <br>
         Genre: {{genre}} <br>
@@ -20,10 +20,7 @@
 
         <a href="pet-view/{{_id}}">View Pet</a>
         <hr>
-        <a href="pet-edit">Edit Pet</a>
-        <hr>
-        <a href="pet-delete">Delete Pet</a>
-        <hr>
+
     </div>
 </div>
 {{/each}}

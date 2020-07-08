@@ -1,8 +1,17 @@
 <h1>>Perfil de Rescue</h1>
 
-{{allRescue}}
+{{#each allRescue}}
+
+<hr>
 
 
 
+<a href="rescue-new">Nuevo perfil Rescue</a>
+{{!-- <a href="profile-rescue-edit/{{_id}}">Editar perfil Rescue</a> --}}
+<hr>
+<a href="/rescue/editrescue?id={{_id}}">Edit Rescue</a>
+<hr>
+<a href="/rescue/delete?id={{_id}}">Delete Rescue</a>
+<hr>
 
-<a href="profile-rescue-edit/{{_id}}">Editar perfil Rescue</a>
+{{/each}}

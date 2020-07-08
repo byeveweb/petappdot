@@ -3,10 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h1 style="font-weight: 100">Editar perfil</h1>
-        </div>
-        <div class="col-md-6">
-            <form action="/adopter/profile/{{thePet._id}}" method="POST">
+            <form action="pet-new" method="POST">
                 {{#with thePet}}
                 <div class="form-group">
                     <label for="field1">Type Animal</label>
@@ -56,7 +53,7 @@
                 {{/if}}
             </form>
 
-            <a href="/adopter/profile" class="btn btn-dark">Volver</a>
+            <a href="/rescue/profile" class="btn btn-dark">Volver</a>
 
         </div>
     </div>
