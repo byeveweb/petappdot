@@ -4,7 +4,7 @@ const { create } = require('../models/rescue.model')
 const Pet = require('../models/pet.model')
 //const User = require('../models/user.model')
 
-const Guest = require('../models/guest.model');
+//const Guest = require('../models/guest.model');
 const User = require('../models/user.model');
 
 Rescue.collection.drop()
@@ -31,11 +31,37 @@ const pets = [
         genre: "male",
         age: 22,
         dateBorn: '1991-01-21',
-        description: "amazing reptil",
+        description: "amazing reptile",
         Sterilized: true,
         GalleryImages: "...", 
       
-},
+    },
+     {
+         rescueId: '..',
+         virtualChip: "...",
+         typeAnimal: "bird",
+         race: '.',
+         genre: "female",
+         age: 26,
+         dateBorn: '1991-01-21',
+         description: "amazing bird",
+         Sterilized: true,
+         GalleryImages: "...",
+
+    },
+      {
+          rescueId: '5f04a318d78952672545a72a',
+          virtualChip: "...",
+          typeAnimal: "fish",
+          race: '.',
+          genre: "male",
+          age: 32,
+          dateBorn: '1991-01-21',
+          description: "amazing fish",
+          Sterilized: false,
+          GalleryImages: "...",
+
+      },
 ]
 
 const users = [
