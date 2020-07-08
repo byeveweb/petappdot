@@ -1,0 +1,29 @@
+<h1>Pet List Rescue</h1>
+<a href="pet-new">New Pet</a>
+<hr>
+
+{{#each allPet}}
+<div class="col-md-12 col-sm-12">
+    <div class="verticleilist listing-shot">
+        ID: {{name}}<br>
+        RescueId: {{rescueOtherId}}<br>
+        VirualChip: {{description}}<br>
+        Type: {{typeAnimal}}<br>
+        Race: {{race}} <br>
+        Genre: {{genre}} <br>
+        Age: {{age}} <br>
+        Born: {{dateBorn}} <br>
+        description: {{description}} <br>
+        Sterilice: {{sterilized}} <br>
+        galery: {{galleryImages}} <br>
+        <hr>
+
+        <a href="pet-view/{{_id}}">View Pet</a>
+        <hr>
+        <a href="pet-edit">Edit Pet</a>
+        <hr>
+        <a href="pet-delete">Delete Pet</a>
+        <hr>
+    </div>
+</div>
+{{/each}}

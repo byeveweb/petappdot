@@ -1,0 +1,23 @@
+<h1>Ver tu perfil</h1>
+{{!-- {{allUser}} --}}
+{{!-- hola: {{id}}
+<a href="/profile/{{_id}}">Ver tu perfil</a> --}}
+{{#with allUser}}
+Id: {{_id}}<br>
+username: {{username}}<br>
+email {{email}}<br>
+phone: {{phone}}<br>
+role: {{role}}<br>
+creado: {{createdAt}}<br>
+update: {{updatedAt}}<br>
+
+{{/with}}
+
+<hr>
+
+<a href="profile/{{allUser._id}}">Edit profile</a><br>
+<hr>
+<a href="profile-rescue">View profile Rescue</a><br>
+<hr>
+<a href="pet-list-rescue">View animal list</a><br>
+<hr>
