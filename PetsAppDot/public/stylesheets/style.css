@@ -1,21 +1,27 @@
-/*-----------------------------------------
-* Theme Name: Listing Hub
-* Author: Themez Hub
-* Version: 2
-* Last Change: Oct 7 2019
-  Author URI    : http://www.themezhub.com/
--------------------------------------------------------------------*/
-/*------------------------------------------------------------------
-# Font Links
-# general setting
-	General: Heading
-	General: Form and Button
-	General: Pagination
-# Global Settings
-	Global Settings: Custom Button
-	Global Settings: Padding Style
-	Global Settings: Margin Style
-	Global Settings: Background Style
+body {
+  font-weight: 200;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 200;
+}
+
+.navbar {
+  margin-bottom: 70px;
+}
+
+#errorMsg {
+  background-color: red;
+  color: white;
+  font-weight: 400;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 5px;
+}
+
+/*# sourceMappingURL=style.css.map */
 	Global Settings: Transparent Background Style
 	Global Settings: Transparent Background with border Style
 	Global Settings: Color Style

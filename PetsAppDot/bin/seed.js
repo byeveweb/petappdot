@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+mongoose.connect('mongodb+srv:alvarouser:poiu@cluster0.ircaf.mongodb.net/test')
+
 const Rescue = require('../models/rescue.model')
 const { create } = require('../models/rescue.model')
 const Pet = require('../models/pet.model')
@@ -6,6 +8,8 @@ const User = require('../models/user.model')
 
 const Guest = require('../models/guest.model');
 const User = require('../models/user.model');
+
+mongoose.connect('mongodb+srv:alvarouser:poiu@cluster0.ircaf.mongodb.net/test')
 
 Rescue.collection.drop()
 Pet.collection.drop()
