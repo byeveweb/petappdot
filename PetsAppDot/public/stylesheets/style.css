@@ -128,26 +128,7 @@ body {
   padding: 0;
   overflow-x: hidden; }
 
-=======
 body {
-<<<<<<< HEAD
-  font-weight: 200; }
-
-h1, h2, h3 {
-  font-weight: 200; }
-
-.navbar {
-  margin-bottom: 70px; }
-
-#errorMsg {
-  background-color: red;
-  color: white;
-  font-weight: 400;
-  text-align: center;
-  padding: 10px 0;
-  margin-top: 5px; }
-
-=======
   background: #ffffff;
   font-family: 'Muli', sans-serif;
   font-weight: 400;
@@ -6752,5 +6733,4 @@ a.cl-box {
 .coquelicot {
   background: #ff3800; }
 
->>>>>>> eva
 /*# sourceMappingURL=style.css.map */
