@@ -1,34 +1,34 @@
-const express = require('express')
-const router = express.Router()
-const multer = require('multer')
-const Picture = require('../models/picture.model')
+// const express = require('express')
+// const router = express.Router()
+// const multer = require('multer')
+// const Picture = require('../models/picture.model')
 
-// File upload settings
-const uploadLocal = multer({
-    dest: './public/uploads/'
-})
-
-
+// // File upload settings
+// const uploadLocal = multer({
+//     dest: './public/uploads/'
+// })
 
 
-// Local upload files routes
-router.get('/upload-local', (req, res, next) => res.render('files/upload-form-local'))
 
-router.post('/upload-local', uploadLocal.single('imageFile'), (req, res, next) => {
 
-    console.log("Multer crea la propiedad 'file' en el objeto req:", req.file)
+// // Local upload files routes
+// router.get('/upload-local', (req, res, next) => res.render('files/upload-form-local'))
 
-    // Validador
-    req.file.size > 3000000 ? console.log("El tamaño de imagen es tochísimo") : console.log('El tamaño de imagen mola')
+// router.post('/upload-local', uploadLocal.single('imageFile'), (req, res, next) => {
 
-    Picture.create({
-            name: req.body.imageName,
-            path: `/uploads/${req.file.filename}`,
-            originalName: req.file.originalname
-        })
-        .then(() => res.redirect('/gallery'))
-        .catch(err => next(new Error(err)))
-})
+//     console.log("Multer crea la propiedad 'file' en el objeto req:", req.file)
+
+//     // Validador
+//     req.file.size > 3000000 ? console.log("El tamaño de imagen es tochísimo") : console.log('El tamaño de imagen mola')
+
+//     Picture.create({
+//             name: req.body.imageName,
+//             path: `/uploads/${req.file.filename}`,
+//             originalName: req.file.originalname
+//         })
+//         .then(() => res.redirect('/gallery'))
+//         .catch(err => next(new Error(err)))
+// })
 
 
 
