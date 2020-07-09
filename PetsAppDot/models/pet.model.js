@@ -47,6 +47,15 @@ const petSchema = new Schema({
     galleryImages: {
         type: [String]
     },
+    nameImg: {
+        type: String
+    },
+    pathImg: {
+        type: String
+    },
+    originalName: {
+        type: String
+    }
 
 }, {
     timestamps: true

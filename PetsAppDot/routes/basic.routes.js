@@ -3,7 +3,19 @@ const router = express.Router();
 // const hbs = require('hbs');
 
 
-// hbs.registerPartials(__dirname + "/views/basicRoutes/partials")
+const User = require("../models/user.model");
+const Pet = require("../models/pet.model");
+const Rescue = require("../models/rescue.model");
+
+
+
+//router.get('/list-rescue', (req, res) => res.render('basicRoutes/list-rescue'))
+//router.get('/list-pets', (req, res) => res.render('basicRoutes/list-pets'))
+
+
+
+//URL > list-pets/ pet => renderizará la vista de basicRoutes/pet-detail.hbs
+router.get('/list-pets/pet', (req, res) => res.render('basicRoutes/pet-detail'))
 
 
 const Pet = require("../models/pet.model");
@@ -65,6 +77,31 @@ router.get('/pet-list-rescue/:id', (req, res, next) => {
             rescueId
         }))
         .catch(err => next(new Error(err)))
+})
+
+
+
+
+//router.get('/', (req, res) => res.render('index'))
+
+
+//el contacto - mailer
+const mailer = require('../configs/nodemailer.config')
+
+router.get('/send', (req, res) => res.render('email-form'))
+router.post('/send', (req, res) => {
+
+let { email, subject, message } = req.body
+
+mailer.sendMail({
+    from: '"PetAppDot Email " <welovepet@petappdot.com>',
+    to: email,
+    subject: subject,
+    text: message,
+    html: `<b>${message}</b>`
+    })
+    .then(info => res.render('email-sent', { email, subject, message, info}))
+    .catch(error => console.log(error));
 })
 
 
