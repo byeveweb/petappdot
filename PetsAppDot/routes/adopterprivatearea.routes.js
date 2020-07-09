@@ -49,6 +49,8 @@ router.get('/pet-adopter/:id', (req, res) => {
         adopterId: sessUser,
         adopter: true
     })
+    // .then(() => res.render('adopter/pet-adopter'))
+    // .catch(err => next(new Error(err)))
     res.send(`${req.params.id}, ${sessUser}`)
 })
 

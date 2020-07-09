@@ -1,7 +1,71 @@
-<h1>Pet details</h1>
+<div class="wrapper">
+    <section class="show-case">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-12">
+                    {{#with thePet}}
+                    <h1 style="margin-bottom: 20px;">Hola! Soy tu nuevo compañero <strong>{{name}}</strong></h1>
 
-{{#with thePet}}
-<div class="col-md-12 col-sm-12">
+                    <article class="blog-news detail-wrapper">
+                        <div class="full-blog">
+
+                            <!-- Featured Image -->
+                            <figure class="img-holder">
+                                <a href="blog-detail.html"><img src="{{pathImg}}" class="img-responsive" alt="News"
+                                        style="with: 100%"></a>
+                                <div class="blog-post-date theme-bg">
+                                    {{dateBorn}}
+                                </div>
+                            </figure>
+
+                            <!-- Blog Content -->
+                            <div class="full blog-content">
+                                <h3 class="bl-title">{{name}}, {{typeAnimal}}</h3>
+                                <div class="blog-text">
+                                    <p>{{description}}
+                                    </p>
+                                </div>
+
+                            </div>
+                            <!-- Blog Content -->
+
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4 col-sm-12">
+
+                    <div class="widget-boxed">
+                        <div class="widget-boxed-header">
+                            <a href="/adopter/pet-adopter/{{_id}}"
+                                class="btn reservation btn-radius theme-btn mrg-top-10">Adóptame!</a>
+                        </div>
+                        <div class="widget-boxed-header">
+                            <h4><i class="ti-check-box padd-r-10"></i>Detalles Pet</h4>
+                        </div>
+                        <div class="side-list">
+                            <ul class="category-list">
+                                <li>Sterilice: <span class="badge">{{sterilized}}</span></a></li>
+                                <li>RescueId: <span class="badge ">{{rescueId}}</span></a></li>
+                                <li>VirualChip: <span class="badge ">{{virtualChip}}</span></a></li>
+                                <li>Type: <span class="badge ">{{typeAnimal}}</span></a></li>
+                                <li>Race: <span class="badge ">{{race}}</span></a></li>
+                                <li>Genre: <span class="badge ">{{genre}}</span></a></li>
+                                <li>Age:: <span class="badge ">{{age}}</span></a></li>
+                            </ul>
+                        </div>
+                        <a href="/list-pets" class="btn reservation btn-radius theme-btn mrg-top-10">Volver</a><br>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+
+{{!-- <div class="col-md-12 col-sm-12">
     <div class="verticleilist listing-shot">
 
         ID: {{_id}}<br>
@@ -16,13 +80,12 @@
         Born: {{dateBorn}} <br>
         description: {{description}} <br>
         Sterilice: {{sterilized}} <br>
-        galery: {{galleryImages}} <br>
 
         <hr>
-        <a href="/adopter/pet-adopter/{{_id}}">Adóptame!</a>
+
         <hr>
-        <a href="/list-pets">Volver</a><br>
+
 
     </div>
-</div>
+</div> --}}
 {{/with}}

@@ -1,67 +1,87 @@
-{{!-- <div class="container">
-    <div class="row" style="padding-top: 20px">
-        <h1>Listado de Rescue</h1>
-    </div>
-    <div class="row">
+<div class="wrapper">
+    <section class="show-case">
+        <div class="container">
+            <h1>Rescue List</h1>
 
-        <div class="col-md-4 col-sm-6">
-            <div class="tp-author-box">
+            {{!-- <div class="row">
+                {{#each allRescues}}
+                <div class="col-md-4 col-sm-6">
+                    <div class="tp-author-box">
 
-                <div class="author-cover-img">
-                    <img src="http://via.placeholder.com/800x500" class="img-responsive" alt="">
-                </div>
-
-                <div class="tp-author-detail-wrapper">
-                    <div class="tp-author-detail-box">
-                        <div class="tp-author">
-                            <a href="author-detail.html" title="author"><img src="http://via.placeholder.com/80x80"
-                                    class="img-responsive " alt=""></a>
+                        <div class="author-cover-img">
+                            <img src="http://via.placeholder.com/800x500" class="img-responsive" alt="">
                         </div>
-                        <div class="tp-author-header">
-                            <h4><a href="author-detail.html" title="author">Eliza Veriliaza</a></h4>
-                            <ul>
-                                <li>Australia</li>
-                                <li>
-                                    <div class="author-type elite-author">Elite Author</div>
-                                </li>
-                            </ul>
+
+                        <div class="tp-author-detail-wrapper">
+                            <div class="tp-author-detail-box">
+                                <div class="tp-author">
+                                    <a href="author-detail.html" title="author"><img src={{logo}}
+                                            class="img-responsive " alt=""></a>
+                                </div>
+                                <div class="tp-author-header">
+                                    <h4><a href="author-detail.html" title="author">{{name}}</a></h4>
+                                    <ul>
+                                        <li>{{description}}</li>
+                                        <li>{{location}}</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tp-author-basic-info">
-                        <ul>
-                            <li><strong>Listings</strong>120</li>
-                            <li><strong>Followers</strong>870</li>
-                            <li><strong>Following</strong>625</li>
-                        </ul>
+                        <a href="rescue-view/{{_id}}" class="detail-link">View Rescue</a><br>
                     </div>
                 </div>
+                {{/each}}
+
+                {{!-- <div class="col-md-12 col-sm-12">
+                    <div class="verticleilist listing-shot">
+                        name: {{name}}<br>
+                        RescueOtherId: {{rescueOtherId}}<br>
+                        description: {{description}}<br>
+                        logo: {{logo}}<br>
+                        location: {{location}} <br>
+
+                        <hr>
+                        <a href="rescue-view/{{_id}}">View Rescue</a><br>
+
+                        <a href="/">Volver</a>
+
+
+                    </div>
+                </div> --}}
+            {{!-- </div> --}}
+            <div class="row">
+                {{#each allRescues}}
+                <div class="col-md-6 col-sm-6">
+                    <div class="listing-shot grid-style">
+                        <a href="#">
+                            <div class="listing-shot-img">
+                                <img src={{logo}} class="img-responsive" alt="">
+                            </div>
+                            <div class="listing-shot-caption">
+                                <h4>{{name}}</h4>
+                                <p class="listing-location">{{location}}</p>
+                            </div>
+                        </a>
+                        <div class="listing-shot-info">
+                            <div class="row extra">
+                                <div class="col-md-12">
+                                    <div class="listing-detail-info">
+                                        <span><i class="fa fa-phone" aria-hidden="true"></i> {{description}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="listing-shot-info rating">
+                            <div class="row extra">
+                                <div class="col-md-5 col-sm-5 col-xs-6 pull-right">
+                                    <a href="rescue-view/{{_id}}" class="detail-link">VER</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
             </div>
         </div>
-
-{{#each allRescues}}
-<div class="col-md-12 col-sm-12">
-    <div class="verticleilist listing-shot">
-        name: {{name}}<br>
-        RescueOtherId: {{rescueOtherId}}<br>
-        description: {{description}}<br>
-        logo: {{logo}}<br>
-        location: {{location}} <br>
-        
-        <hr>
-        <a href="rescue-view/{{_id}}">View Rescue</a><br>
-        
-        <a href="/">Volver</a>
-        
-      
-    </div>
-</div> --}}
-
-<h1>Listado de Rescues</h1>
-
-{{#each allRescues}}
-
-{{_id}}
-
-<p>he aqui la etiqueta</p>
-
-{{/each}}
+    </section>
+</div>

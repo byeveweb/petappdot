@@ -1,19 +1,73 @@
-<h1>Rescue details</h1>
+<div class="wrapper">
+    <section class="show-case">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-12">
+                    {{#with theRescue}}
+                    <h1 style="margin-bottom: 20px;">Wellcome!</h1>
 
-{{#with theRescue}}
-<div class="col-md-12 col-sm-12">
+                    <article class="blog-news detail-wrapper">
+                        <div class="full-blog">
+
+                            <!-- Featured Image -->
+                            <figure class="img-holder">
+                                <a href="blog-detail.html"><img src="{{logo}}" class="img-responsive" alt="News"
+                                        style="with: 100%"></a>
+                                <div class="blog-post-date theme-bg">
+                                    OPEN NOW
+                                </div>
+                            </figure>
+
+                            <!-- Blog Content -->
+                            <div class="full blog-content">
+                                <h3 class="bl-title"><strong>{{name}}</strong></h3>
+                                <div class="blog-text">
+                                    <p>{{description}}
+                                    </p>
+                                </div>
+
+                            </div>
+                            <!-- Blog Content -->
+
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4 col-sm-12">
+
+                    <div class="widget-boxed">
+                        <div class="widget-boxed-header">
+                            <a href="/list-pets" class="btn reservation btn-radius theme-btn mrg-top-10">Mis Pets</a>
+                        </div>
+                        <div class="side-list">
+                            <ul class="category-list">
+                                <li>{{location}}</li>
+
+                            </ul>
+                        </div>
+                        <a href="/list-pets" class="btn reservation btn-radius theme-btn mrg-top-10">Volver</a><br>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+{{!-- <div class="col-md-12 col-sm-12">
     <div class="verticleilist listing-shot">
 
-    name:{{name}}<br>
-    rescue Id:{{rescueId}}<br>
-    description:{{description}}<br>
-    logo:{{logo}}<br>
-    location{{location}}:<br>
-    
-    <a href="/list-pets">Ver mascotas!</a><br>
+        name:{{name}}<br>
+        rescue Id:{{rescueId}}<br>
+        description:{{description}}<br>
+        logo:{{logo}}<br>
+        location{{location}}:<br>
 
-    <a href="/list-rescue">Volver</a><br>
+        <a href="/list-pets">Ver mascotas!</a><br>
+
+        <a href="/list-rescue">Volver</a><br>
 
     </div>
-</div>
+</div> --}}
 {{/with}}

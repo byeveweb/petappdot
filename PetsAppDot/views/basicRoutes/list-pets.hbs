@@ -1,41 +1,98 @@
-{{!-- {{> partialProbar}} --}}
+<div class="wrapper">
+    <section class="show-case">
+        <div class="container">
+            <h1>Pets List</h1>
+            <div class="row">
+                {{#each allPets}}
+                <div class="col-md-12 col-sm-12">
+                    <div class="verticleilist listing-shot">
+                        <div class="listing-badge now-open">In a adoption</div>
+
+                        <a class="listing-item" href="#">
+                            <div class="listing-shot-img">
+                                <img src={{pathImg}} class="img-responsive" alt="">
+                                <span class="approve-listing"><i class="fa fa-check"></i></span>
+                            </div>
+                        </a>
+
+                        <div class="verticle-listing-caption">
+
+                           
+                            <div class="listing-shot-caption">
+                                <h4>{{name}}</h4>
+                                <p class="listing-description">{{description}}</p>
+                            </div>
+
+                            <div class="listing-shot-info">
+                                <div class="row extra">
+                                    <div class="col-md-12">
+                                        <div class="listing-detail-info">
+                                            <span><i class="fa fa-map-marker"
+                                                    aria-hidden="true"></i>{{typeAnimal}}</span>
+                                            <span><i class="fa fa-phone" aria-hidden="true"></i>{{race}}</span>
+                                            <span><i class="fa fa-globe" aria-hidden="true"></i>
+                                                {{genre}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="listing-shot-info rating">
+                                <div class="row extra">
+                                    <div class="col-md-7 col-sm-7 col-xs-6">
+                                        <i class="color fa fa-star" aria-hidden="true"></i>
+                                        <i class="color fa fa-star" aria-hidden="true"></i>
+                                        <i class="color fa fa-star" aria-hidden="true"></i>
+                                        <i class="color fa fa-star-half-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <span>{{rescueId}}</span>
+                                    </div>
+                                    <div class="col-md-5 col-sm-5 col-xs-6 pull-right">
+                                        <a href="pet-view/{{_id}}" class="detail-link">PET VIEW</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
 
 
-<h1>Listado de pets</h1>
 
-{{#each allpets}}
-{{> partialProbar this}}
-{{/each}}
 
-{{#each allPets}}
-<div class="col-md-12 col-sm-12">
-    <div class="verticleilist listing-shot">
-        ID: {{_id}}<br>
-        adopterId: {{adopterId}}<br>
-        Adopter: {{adopter}}<br>
-        RescueId: {{rescueId}}<br>
-        VirualChip: {{virtualChip}}<br>
-        Type: {{typeAnimal}}<br>
-        Race: {{race}} <br>
-        Genre: {{genre}} <br>
-        Age: {{age}} <br>
-        Born: {{dateBorn}} <br>
-        description: {{description}} <br>
-        Sterilice: {{sterilized}} <br>
-        galery: {{galleryImages}} <br>
+                {{!-- {{#each allPets}} --}}
+                {{!-- <div class="col-md-12 col-sm-12">
+                    <div class="verticleilist listing-shot">
+                        ID: {{_id}}<br>
+                        adopterId: {{adopterId}}<br>
+                        Adopter: {{adopter}}<br>
+                        RescueId: {{rescueId}}<br>
+                        VirualChip: {{virtualChip}}<br>
+                        Type: {{typeAnimal}}<br>
+                        Race: {{race}} <br>
+                        Genre: {{genre}} <br>
+                        Age: {{age}} <br>
+                        Born: {{dateBorn}} <br>
+                        description: {{description}} <br>
+                        Sterilice: {{sterilized}} <br>
+                        galery: {{galleryImages}} <br>
 
-<li class="glide__slide">
-    <img src="{{pathImg}}" alt="{{nameImg}}" style="width: 100%">
-</li>
+                        <li class="glide__slide">
+                            <img src="{{pathImg}}" alt="{{nameImg}}" style="width: 100%">
+                        </li>
 
-        <hr>
-        <a href="pet-view/{{_id}}">View Pet</a><br>
-        <hr>
-        <a href="/files/upload-local">Añade tu imagen!</a><br>
-        <hr>  
-        <a href="/">Volver</a>
+                        <hr>
+                        <a href="pet-view/{{_id}}">View Pet</a><br>
+                        <hr>
+                        <a href="/files/upload-local">Añade tu imagen!</a><br>
+                        <hr>
+                        <a href="/">Volver</a>
 
-    </div>
+                    </div>
+                </div> --}}
+                {{/each}}
+            </div>
+        </div>
+    </section>
 </div>
-{{/each}}
