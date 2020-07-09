@@ -6,6 +6,8 @@ const User = require("../models/user.model");
 const Pet = require("../models/pet.model");
 const Rescue = require("../models/rescue.model");
 
+
+
 //router.get('/list-rescue', (req, res) => res.render('basicRoutes/list-rescue'))
 //router.get('/list-pets', (req, res) => res.render('basicRoutes/list-pets'))
 
@@ -68,6 +70,30 @@ router.get('/pet-list-rescue/:id', (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
+
+
+
+//router.get('/', (req, res) => res.render('index'))
+
+
+//el contacto - mailer
+const mailer = require('../configs/nodemailer.config')
+
+router.get('/send', (req, res) => res.render('email-form'))
+router.post('/send', (req, res) => {
+
+let { email, subject, message } = req.body
+
+mailer.sendMail({
+    from: '"PetAppDot Email " <welovepet@petappdot.com>',
+    to: email,
+    subject: subject,
+    text: message,
+    html: `<b>${message}</b>`
+    })
+    .then(info => res.render('email-sent', { email, subject, message, info}))
+    .catch(error => console.log(error));
+})
 
 
 module.exports = router;

@@ -9,4 +9,30 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
+
+//Aqui German añade en su video:
+
+// 1 añadir modelo picture
+
+// const Picture = require('../models/picture model')
+
+// router.get('/', (req, res, next) => res.render('index'))
+// router.get('/gallery', (req, res, next) => { 
+
+//   Picture.find()
+//   .then(allThePictures => res.render('pages/gallery-page', {allThePictures}))
+// .catch(err => next (new Error (err)))
+
+// })
+
+
+
+
+
+
+
+
+
+
+
 module.exports = router;

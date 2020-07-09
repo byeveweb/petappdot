@@ -11,5 +11,15 @@ module.exports = app => {
     app.use('/', require('./basic.routes'))
     app.use('/rescue', checkRole(['RESCUE', 'ADMIN']), require('./rescueprivatearea.routes'))
     app.use('/adopter', checkRole(['ADOPTER', 'ADMIN']), require('./adopterprivatearea.routes'))
+    //mailer
+    app.use('/', require('./index.routes'))
+    app.use('/email', require('./basic.routes'))
+
+
+// ESTO ES MULTER  app.use('/files', require('./upload.routes)) 
+    
+
+ 
+    
 
 }
