@@ -1,0 +1,35 @@
+<h1>New Rescue</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form action="rescue-new" method="POST">
+                {{#with theRescue}}
+                <div class="form-group">
+                    <label for="field1">Name</label>
+                    <input name="name" type="text" class="form-control" id="field1">
+                </div>
+                <div class="form-group">
+                    <label for="field2">Description</label>
+                    <input name="description" type="text" class="form-control" id="field2">
+                </div>
+                <div class="form-group">
+                    <label for="field3">logo</label>
+                    <input name="logo" type="text" class="form-control" id="field3">
+                </div>
+                <div class="form-group">
+                    <label for="field4">location</label>
+                    <input name="location" type="text" class="form-control" id="field4">
+                </div>
+                {{/with}}
+                <button type="submit" class="btn btn-dark btn-block btn-lg">Guardar</button>
+
+                {{#if errorMsg}}
+                <div id="errorMsg">{{{errorMsg}}}</div>
+                {{/if}}
+            </form>
+
+            <a href="/rescue/profile" class="btn btn-dark">Volver</a>
+
+        </div>
+    </div>

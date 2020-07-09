@@ -5,19 +5,19 @@ const Schema = mongoose.Schema;
 const User = require("./user.model")
 
 const rescueSchema = new Schema({
-            name: {
-                type: String
-            },
-            rescueOtherId: {
-                type: Schema.Types.ObjectId,
-                ref: 'User'
-            },
-            description: {
-                type: String
-            },
-            logo: {
-                type: String
-            },
+    name: {
+        type: String
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    description: {
+        type: String
+    },
+    logo: {
+        type: String
+    },
     location: {
         type: String
     }

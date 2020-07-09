@@ -1,4 +1,4 @@
-<h1>Ver tu perfil</h1>
+Ver tu perfil
 {{!-- {{allUser}} --}}
 {{!-- hola: {{id}}
 <a href="/profile/{{_id}}">Ver tu perfil</a> --}}
@@ -13,12 +13,5 @@ update: {{updatedAt}}<br>
 
 {{/with}}
 
-<hr>
-
-<hr>
-<a href="/rescue/editprofile?id={{allUser.id}}">Edit Profile</a>
-<hr>
-<a href="profile-rescue">View Rescue</a><br>
-<hr>
-{{!-- <a href="pet-list-rescue">View pet list</a><br> --}}
-<hr>
+<a href="profile/{{allUser._id}}">Edit profile</a>
+<a href="pet-adopter">View Pet adopter</a>
