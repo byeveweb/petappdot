@@ -32,7 +32,9 @@ router.get('/contact', (req, res) => res.render('basicRoutes/contact'))
 //Muestra el listado de las mascotas inscritas --GET
 
 router.get('/list-pets', (req, res, next) => {
-    Pet.find()
+    Pet.find({
+            adopter: false
+        })
         .then((allPets) => res.render('basicRoutes/list-pets', {
             allPets
         }))
@@ -81,7 +83,6 @@ router.get('/pet-list-rescue/:id', (req, res, next) => {
         }))
         .catch(err => next(new Error(err)))
 })
-
 
 
 module.exports = router;

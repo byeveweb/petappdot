@@ -6,31 +6,33 @@ const {
     create
 } = require('../models/rescue.model')
 const Pet = require('../models/pet.model')
-//const User = require('../models/user.model')
+const User = require('../models/user.model')
 
 mongoose.connect(`mongodb://localhost/petappdot`)
 
 
-const rescues = [{
-        userId: '5f03709162b23c48a2407e05',
-        name: "Gatetes a GoGooo",
-        description: 'miauuuu',
-        logo: '..',
-        location: "allí"
-    },
-    {
-        userId: '5f03709162b23c48a2407e05',
-        name: "Perretes a GoGooo",
-        description: 'waoo',
-        logo: '..',
-        location: "allí"
-    },
+// const rescues = [{
+//         userId: '5f03709162b23c48a2407e05',
+//         name: "Gatetes a GoGooo",
+//         description: 'miauuuu',
+//         logo: '..',
+//         location: "allí"
+//     },
+//     {
+//         userId: '5f03709162b23c48a2407e05',
+//         name: "Perretes a GoGooo",
+//         description: 'waoo',
+//         logo: '..',
+//         location: "allí"
+//     },
 
-]
+// ]
 
 const pets = [{
         rescueId: '5f060d148cfe2a76736b87fe',
         virtualChip: "VC0000000000000001",
+        adopterId: ObjectId(''),
+        adopter: false,
         name: 'Bob',
         typeAnimal: "dog",
         race: 'fcomun',
@@ -45,6 +47,8 @@ const pets = [{
     {
         rescueId: '5f060d148cfe2a76736b87fe',
         virtualChip: "VC0000000000000003",
+        adopterId: ObjectId(''),
+        adopter: false,
         name: 'Mon',
         typeAnimal: "cat",
         race: 'european comun',

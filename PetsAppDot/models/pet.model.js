@@ -7,6 +7,14 @@ const petSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Rescue"
     },
+    adopterId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    adopter: {
+        type: Boolean,
+        default: false
+    },
     virtualChip: {
         type: String
     }, // ojo el match: /[A-Z]{2}\d{4}/

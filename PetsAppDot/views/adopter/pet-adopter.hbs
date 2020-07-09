@@ -1,1 +1,27 @@
-Lista de animales adoptados
+<h1>Pet details</h1>
+
+
+{{#each thePet}}
+<div class="col-md-12 col-sm-12">
+    <div class="verticleilist listing-shot">
+
+        ID: {{_id}}<br>
+        adopterId: {{adopterId}}<br>
+        Adopter: {{adopter}}<br>
+        RescueId: {{rescueId}}<br>
+        VirualChip: {{virtualChip}}<br>
+        Type: {{typeAnimal}}<br>
+        Race: {{race}} <br>
+        Genre: {{genre}} <br>
+        Age: {{age}} <br>
+        Born: {{dateBorn}} <br>
+        description: {{description}} <br>
+        Sterilice: {{sterilized}} <br>
+        galery: {{galleryImages}} <br>
+
+        <hr>
+        <a href="/list-pets">Volver</a><br>
+
+    </div>
+</div>
+{{/each}}

@@ -4,6 +4,8 @@
 <div class="col-md-12 col-sm-12">
     <div class="verticleilist listing-shot">
         ID: {{_id}}<br>
+        adopterId: {{adopterId}}<br>
+        Adopter: {{adopter}}<br>
         RescueId: {{rescueId}}<br>
         VirualChip: {{virtualChip}}<br>
         Type: {{typeAnimal}}<br>
@@ -15,10 +17,11 @@
         Sterilice: {{sterilized}} <br>
         galery: {{galleryImages}} <br>
         <hr>
-        <a href="pet-view/{{_id}}">View Pet</a><br>
-        
+        <a href="pet-view/{{_id}}">View Pet</a>
+        <hr>
+
         <a href="/">Volver</a>
-    
+
     </div>
 </div>
 {{/each}}
