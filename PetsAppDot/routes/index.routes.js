@@ -10,27 +10,18 @@ router.get("/", (req, res) => {
 });
 
 
-//Aqui German añade en su video:
+//IMAGENES
 
-// const Picture = require('../models/picture model')
+const Pet = require('../models/pet.model')
 
-// router.get('/', (req, res, next) => res.render('index'))
-// router.get('/gallery', (req, res, next) => { 
+router.get('/', (req, res, next) => res.render('index'))
+router.get('/gallery-page', (req, res, next) => { 
 
-//   Picture.find()
-//   .then(allThePictures => res.render('pages/gallery-page', {allThePictures}))
-// .catch(err => next (new Error (err)))
+  Pet.find()
+  .then(allThePictures => res.render('pages/gallery-page', {allThePictures}))
+  .catch(err => next (new Error (err)))
 
-// })
-
-
-
-
-
-
-
-
-
+})
 
 
 module.exports = router;
