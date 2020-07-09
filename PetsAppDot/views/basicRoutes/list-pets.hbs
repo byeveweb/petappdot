@@ -1,4 +1,12 @@
+{{!-- {{> partialProbar}} --}}
+
+
+
 <h1>Listado de pets</h1>
+
+{{#each allpets}}
+{{> partialProbar this}}
+{{/each}}
 
 {{#each allPets}}
 <div class="col-md-12 col-sm-12">

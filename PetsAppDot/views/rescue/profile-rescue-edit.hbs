@@ -1,35 +1,32 @@
-<h1>Edit Rescue</h1>
-
-<div class="container">
+<div class="container pad-50 bg-pink">
     <div class="row">
-        <div class="col-md-6">
-            <form action="/adopter/profile/{{thePet._id}}" method="POST">
-                {{#with theRescue}}
-                <div class="form-group">
-                    <label for="field1">Name</label>
-                    <input name="name" type="text" class="form-control" id="field1">
-                </div>
-                <div class="form-group">
-                    <label for="field2">Description</label>
-                    <input name="description" type="text" class="form-control" id="field2">
-                </div>
-                <div class="form-group">
-                    <label for="field3">logo</label>
-                    <input name="logo" type="text" class="form-control" id="field3">
-                </div>
-                <div class="form-group">
-                    <label for="field4">location</label>
-                    <input name="location" type="text" class="form-control" id="field4">
-                </div>
-                {{/with}}
-                <button type="submit" class="btn btn-dark btn-block btn-lg">Guardar</button>
-
-                {{#if errorMsg}}
-                <div id="errorMsg">{{{errorMsg}}}</div>
-                {{/if}}
-            </form>
-
-            <a href="/rescue/profile" class="btn btn-dark">Volver</a>
-
+        <div class="col-12">
+            <h2 class=" border-lf-rg pad-50 aling-center white">
+                <strong>Edit Rescue {{name}}</strong></h2>
         </div>
     </div>
+
+    <form class="form-inline" action="/rescue/editrescue/{{_id}}" method="post">
+        <div class="form-group mb-2 pad-15-r">
+            <label for="name" class="pad-15-r ">Name</label>
+            <input name="name" type="text" class="form-control" id="name" value="{{name}}">
+        </div>
+        <div class="form-group mb-2 pad-15">
+            <label for="ocupation" class="pad-15-r ">Description</label>
+            <input name="description" type="text" class="form-control" id="ocupation" value="{{description}}">
+        </div>
+        <div class="form-group mb-2 pad-15">
+            <label for="catchPharse" class="pad-15-r ">Logo</label>
+            <input name="logo" type="text" class="form-control" id="catchPharse" value="{{logo}}">
+        </div>
+        <div class="form-group mb-2 pad-15">
+            <label for="catchPharses" class="pad-15-r ">Location</label>
+            <input name="location" type="text" class="form-control" id="catchPharses" value="{{location}}">
+        </div>
+
+        <button type="submit" class="btn btn-dark mb-2">Edit Rescue</button>
+    </form>
+    <a class="btn btn-dark btn-sm bradius-0" href='rescue/profile'>Back List</a>
+
+
+</div>

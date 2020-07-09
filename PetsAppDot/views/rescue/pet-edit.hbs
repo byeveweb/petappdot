@@ -1,71 +1,52 @@
-<h1>Pet Edit</h1>
-
-<div class="container">
+<div class="container pad-50 bg-pink">
     <div class="row">
-        <div class="col-md-6">
-            <form action="/adopter/profile/{{thePet._id}}" method="POST">
-                {{#with thePet}}
-                <div class="form-group">
-                    <label for="field1">Type Animal</label>
-                    <input name="typeAnimal" type="text" class="form-control" id="field1">
-                </div>
-                <div class="form-group">
-                    <label for="field2">Race</label>
-                    <input name="race" type="text" class="form-control" id="field2">
-                </div>
-                <div class="form-group">
-                    <label for="field3">Genre</label>
-                    <input name="genre" type="text" class="form-control" id="field3">
-                </div>
-                <div class="form-group">
-                    <label for="field4">Age</label>
-                    <input name="age" type="text" class="form-control" id="field4">
-                </div>
-                <div class="form-group">
-                    <label for="field5">Born</label>
-                    <input name="dateBorn" type="text" class="form-control" id="field5">
-                </div>
-                <div class="form-group">
-                    <label for="field6">Born</label>
-                    <input name="description" type="text" class="form-control" id="field6">
-                </div>
-                <div class="form-group">
-                    <label for="field8">Role</label>
-                    <select name="sterilized" class="form-control" id="role-list">
-                        <option>Tipo de usuario</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="field8">Galerry</label>
-                    <input name="galey" type="text" class="form-control" id="field8">
-                </div>
-
-
-
-
-                {{/with}}
-                <button type="submit" class="btn btn-dark btn-block btn-lg">Guardar</button>
-
-                {{#if errorMsg}}
-                <div id="errorMsg">{{{errorMsg}}}</div>
-                {{/if}}
-            </form>
-
-            <a href="/rescue/profile" class="btn btn-dark">Volver</a>
-
+        <div class="col-12">
+            <h2 class=" border-lf-rg pad-50 aling-center white">
+                <strong>Edit Pet {{name}}</strong></h2>
         </div>
     </div>
 
-    {{!-- ID: {{_id}}<br>
-        RescueId: {{rescueId}}<br>
-        VirualChip: {{virtualChip}}<br>
-        Type: {{typeAnimal}}<br>
-        Race: {{race}} <br>
-        Genre: {{genre}} <br>
-        Age: {{age}} <br>
-        Born: {{dateBorn}} <br>
-        description: {{description}} <br>
-        Sterilice: {{sterilized}} <br>
-        galery: {{galleryImages}} <br> --}}
+    <form class="form-inline" action="/rescue/editpet/{{_id}}" method="post">
+        <div class="form-group mb-2 pad-15-r">
+            <label for="name" class="pad-15-r ">Name</label>
+            <input name="name" type="text" class="form-control" id="name" value="{{name}}">
+        </div>
+        <div class="form-group mb-2 pad-15">
+            <label for="ocupation" class="pad-15-r ">Tipo Animal</label>
+            <input name="typeAnimal" type="text" class="form-control" id="ocupation" value="{{typeAnimal}}">
+        </div>
+        <div class="form-group mb-2 pad-15">
+            <label for="catchPharse" class="pad-15-r ">Raza</label>
+            <input name="race" type="text" class="form-control" id="catchPharse" value="{{race}}">
+        </div>
+        <div class="form-group mb-2 pad-15">
+            <label for="catchPharses" class="pad-15-r ">Genre</label>
+            <input name="genre" type="text" class="form-control" id="catchPharses" value="{{genre}}">
+        </div>
+        <div class="form-group mb-2 pad-15">
+            <label for="catchPharses" class="pad-15-r ">Edad</label>
+            <input name="age" type="text" class="form-control" id="catchPharses" value="{{age}}">
+        </div>
+        <div class="form-group mb-2 pad-15">
+            <label for="catchPharses" class="pad-15-r ">Nacimiento</label>
+            <input name="dateBorn" type="text" class="form-control" id="catchPharses" value="{{dateBorn}}">
+        </div>
+        <div class="form-group mb-2 pad-15">Description</label>
+            <input name="description" type="text" class="form-control" id="catchPharses" value="{{description}}">
+        </div>
+        <div class="form-group mb-2 pad-15">ESterilizado</label>
+            <select name="sterilize" id="">
+                <option value="true">Si</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <div class="form-group mb-2 pad-15">Imagen</label>
+            <input name="galleryImages" type="text" class="form-control" id="catchPharses" value="{{galleryImages}}">
+        </div>
+
+        <button type="submit" class="btn btn-dark mb-2">Edit Pet</button>
+    </form>
+    <a class="btn btn-dark btn-sm bradius-0" href='rescue/profile'>Back List</a>
+
+
+</div>

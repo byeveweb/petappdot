@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <form action="pet-new?id={{rescueId.id}}" method="POST">
+            <form action="pet-new" method="POST">
                 {{#with thePet}}
                 <div class="form-group">
                     <label for="field1">Type Animal</label>
@@ -43,8 +43,11 @@
                 </div>
                 <div class="form-group">
                     <label for="field8">Galerry</label>
-                    <input name="galey" type="text" class="form-control" id="field8">
+                    <input name="galery" type="text" class="form-control" id="field8">
                 </div>
+                {{!-- <div class="form-group" style="opacity: 0">
+                    <input name="adopterId" type="text" class="form-control" id="field8">
+                </div> --}}
 
 
                 {{/with}}

@@ -1,15 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
+const hbs = require('hbs')
 
-// Role checker middleware
-// router.get('/profile', (req, res) => res.send('inicio de area privada de RESCUE'))
 
+hbs.registerPartials(__dirname + "/views/partials")
+
+//-------------MODELS-----------------
 const User = require("../models/user.model");
 const Rescue = require("../models/rescue.model");
 const Pet = require("../models/pet.model");
 
-//Perfil de Usuario Rescue
+//-----------------User Rescue Profile
 router.get("/profile", (req, res, next) => {
     const sessUser = req.session.passport.user;
     User.findById(sessUser)
@@ -21,28 +23,47 @@ router.get("/profile", (req, res, next) => {
         .catch((err) => console.log("Error en list guest", err));
 });
 
-//Edit profile
-// router.get('/profile/:id', (req, res) => res.send('edit profile RESCUE'))
-router.get("/editprofile", (req, res) => {
-    Rescue.findById(req.query.id)
-        .then((theRescue) =>
-            res.render("rescue/user-profile-edit", {
-                theRescue,
-            })
-        )
-        .catch((err) => next(new Error(err)));
-});
-router.post("/profile/edit", (req, res) => res.send("edit profile RESCUE"));
 
-//Rescue-Profile
-// router.get('/profile-rescue', (req, res) => res.render('rescue/profile-rescue'))
+//Edit profile
+router.get('/edit/:id', (req, res) => {
+    User.findById(req.params.id)
+        .then(theUser => {
+            res.render('rescue/user-profile-edit', theUser)
+        })
+        .catch(err => console.log('Error en Id celebrity edit', err))
+})
+
+
+router.post('/edit/:userId', (req, res) => {
+    const {
+        avatar,
+        phone,
+        username,
+        password,
+        adress
+    } = req.body
+
+    User
+        .findByIdAndUpdate(req.params.userId, {
+            avatar,
+            phone,
+            username,
+            password,
+            adress
+        }, {
+            new: true
+        })
+        // .then(() => res.redirect(`/rescue/detail/${req.params.userId}`))
+        .then(() => res.redirect(`/rescue/profile`))
+        .catch(err => console.log("Error en la BBDD", err))
+})
+
+//-----------------Rescue Profile
 router.get("/profile-rescue", (req, res, next) => {
     const sessUser = req.session.passport.user;
-    // res.send(sessUser)
     Rescue.find({
             userId: sessUser,
         })
-        // .populate('userId')
         .then((allRescue) =>
             res.render("rescue/profile-rescue", {
                 allRescue,
@@ -50,10 +71,9 @@ router.get("/profile-rescue", (req, res, next) => {
         );
 });
 
-//Rescue-Profile New
+//New Rescue
 router.get("/rescue-new", (req, res) => {
     Rescue.find()
-        //  .populate('Park')
         .then((theRescue) =>
             res.render("rescue/profile-rescue-new", {
                 theRescue,
@@ -82,25 +102,48 @@ router.post("/rescue-new", (req, res, next) => {
         .catch((err) => next(new Error(err)));
 });
 
-//Rescue-Profile Edit
-router.get("/editrescue", (req, res) => {
-    Rescue.findById(req.query.id)
-        .then((theRescue) =>
-            res.render("rescue/profile-rescue-edit", {
-                theRescue,
-            })
-        )
+//Edit Rescue
+router.get("/editrescue/:id", (req, res) => {
+    Rescue.findById(req.params.id)
+        .then(theRescue => {
+            res.render('rescue/profile-rescue-edit', theRescue)
+        })
+        .catch(err => console.log('Error en Id celebrity edit', err))
+});
+
+router.post("/editrescue/:rescueId", (req, res) => {
+    const {
+        name,
+        description,
+        logo,
+        location
+    } = req.body
+
+    Rescue
+        .findByIdAndUpdate(req.params.rescueId, {
+            name,
+            description,
+            logo,
+            location
+        }, {
+            new: true
+        })
+
+        .then(() => res.redirect(`/rescue/profile-rescue`))
+        .catch(err => console.log("Error en la BBDD", err))
+});
+
+//Delete Rescue
+router.get("/delete", (req, res, next) => {
+    Rescue.findByIdAndDelete(req.query.id)
+        .then(() => res.redirect("profile-rescue"))
         .catch((err) => next(new Error(err)));
 });
 
-router.post("/profile-rescue-edit", (req, res) =>
-    res.send("edit perfil de rescue")
-);
 
-// List animals
+//-------------------- Pets List
 router.get("/pet-list-rescue", (req, res) => {
     const rescueUser = req.query.id;
-    // res.send(rescueUser)
     Pet.find({
             rescueId: rescueUser,
         })
@@ -113,35 +156,21 @@ router.get("/pet-list-rescue", (req, res) => {
         .catch((err) => console.log("Error en list guest", err));
 });
 
-// New animal
-router.get("/pet-new", (req, res) => {
-    const userId = req.user
-
-
-    Rescue.find({
-            userId: userId,
-        })
-        // .populate('userId')
-        .then(userRescue =>
-            userRescue === {
-                userId
-            })
-
-
+// New pet
+router.get("/pet-new/:id", (req, res) => {
     Pet.find()
         .then((thePet) =>
             res.render("rescue/pet-new", {
                 thePet,
             })
         )
-        .catch((err) => console.log("Error traer listado theParklist", err));
+        .catch((err) => console.log("Error traer listado ", err));
 });
 
 router.post("/pet-new", (req, res, next) => {
-
-    Rescue.findById()
+    const rescueUser = req.body.id;
     console.log(req.body.id)
-    const rescueUser = req.query.id;
+    const sessUser = req.user;
     const {
         typeAnimal,
         race,
@@ -150,10 +179,10 @@ router.post("/pet-new", (req, res, next) => {
         dateBorn,
         description,
         sterilized,
-        galleryImages
+        galleryImages,
     } = req.body;
 
-    Pet.create(req.query.id, {
+    Pet.create({
             typeAnimal,
             race,
             genre,
@@ -162,38 +191,14 @@ router.post("/pet-new", (req, res, next) => {
             description,
             sterilized,
             galleryImages,
-            rescueId: rescueUser
+            rescueId: rescueUser,
+            adopterId: sessUser
         })
-        .then(() => res.redirect(`pet-list-rescue`))
+        .then(() => res.redirect("pet-list-rescue"))
         .catch((err) => next(new Error(err)));
-    // const rescueUser = req.query.id
-    //   const {
-    //     typeAnimal,
-    //     race,
-    //     genre,
-    //     age,
-    //     dateBorn,
-    //     description,
-    //     sterilized,
-    //     galleryImages,
-    //     rescueId
-    //   } = req.body;
-    //   Pet.create({
-    //     typeAnimal,
-    //     race,
-    //     genre,
-    //     age,
-    //     dateBorn,
-    //     description,
-    //     sterilized,
-    //     galleryImages,
-    //     rescueId: rescueUser,
-    //   })
-    //     .then(() => res.redirect("pet-list-rescue"))
-    //     .catch((err) => next(new Error(err)));
 });
 
-// View animal
+// View pet
 router.get("/pet-view/:id", (req, res) => {
     Pet.findById(req.params.id)
         // .populate('park_id')
@@ -205,21 +210,57 @@ router.get("/pet-view/:id", (req, res) => {
         .catch((err) => next(new Error(err)));
 });
 
-// Edit animal
-// router.get('/pet-edit', (req, res) => res.render('rescue/pet-edit'))
-router.get("/edit", (req, res) => {
-    Pet.findById(req.query.id)
-        .then((thePet) =>
-            res.render("rescue/pet-edit", {
-                thePet,
-            })
-        )
-        .catch((err) => next(new Error(err)));
+
+
+
+
+// Edit pet
+router.get("/editpet/:id", (req, res) => {
+    Pet.findById(req.params.id)
+        .then(theRescue => {
+            res.render('rescue/pet-edit', theRescue)
+        })
+        .catch(err => console.log('Error en Id celebrity edit', err))
 });
-router.post("/pet-edit", (req, res) => res.send("FORM de edición para el pet"));
+
+router.post("/editpet/:petId", (req, res) => {
+    const {
+        name,
+        description,
+        typeAnimal,
+        race,
+        genre,
+        age,
+        dateBorn,
+        sterilize,
+        galleryImages
+    } = req.body
+
+    Pet
+        .findByIdAndUpdate(req.params.petId, {
+            name,
+            description,
+            typeAnimal,
+            race,
+            genre,
+            age,
+            dateBorn,
+            sterilize,
+            galleryImages
+        }, {
+            new: true
+        })
+
+        .then(() => res.redirect(`/rescue/pet-view/${req.params.petId}`))
+        .catch(err => console.log("Error en la BBDD", err))
+});
+
+
+
+
+
 
 // Delete animals
-// router.get('/pet-delete', (req, res) => res.send('FORM de baja para pet'))
 router.get("/delete", (req, res, next) => {
     Pet.findByIdAndDelete(req.query.id)
         .then(() => res.redirect("pet-list-rescue"))

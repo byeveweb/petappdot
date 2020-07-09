@@ -53,18 +53,5 @@ router.get('/pet-adopter/:id', (req, res) => {
 })
 
 
-// router.get('/pet-adopter/:id', (req, res) => {
-
-//     const sessUser = req.user.id
-//     const {
-//         adopterID
-//     } = req.body
-
-//     Pet.findByIdAndUpdate(req.query.id, {
-//             adopterID: sessUser
-//         })
-//         .then(() => res.redirect(`pet-adopter/${req.query.id}`))
-//         .catch(err => next(new Error(err)))
-// })
 
 module.exports = router;
