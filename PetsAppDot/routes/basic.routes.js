@@ -50,6 +50,38 @@ router.get('/list-rescue', (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
+//en la BBDD de los pets
+router.get('/pet-view/:id', (req, res, next) => {
+    Pet.findById(req.params.id)
+        .then((thePet) => res.render('basicRoutes/pet-detail', {
+            thePet
+        }))
+        .catch(err => next(new Error(err)))
+})
+
+//en la BBDD de los rescues
+router.get('/rescue-view/:id', (req, res, next) => {
+    Rescue.findById(req.params.id)
+        .then((theRescue) => res.render('basicRoutes/rescue-detail', {
+            theRescue
+        }))
+        .catch(err => next(new Error(err)))
+})
+
+
+
+router.get('/pet-list-rescue/:id', (req, res, next) => {
+    Pet.find({}, {
+            rescueId: req.params.id
+        })
+        .then((allPets) => res.render('basicRoutes/list-pets', {
+            allPets
+        }, {
+            rescueId
+        }))
+        .catch(err => next(new Error(err)))
+})
+
 
 
 module.exports = router;
