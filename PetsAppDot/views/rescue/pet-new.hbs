@@ -3,8 +3,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <form action="pet-new" method="POST">
-                {{#with thePet}}
+            <form action="/rescue/pet-new" method="POST">
+
                 <div class="form-group">
                     <label for="field1">Type Animal</label>
                     <input name="typeAnimal" type="text" class="form-control" id="field1">
@@ -45,12 +45,11 @@
                     <label for="field8">Galerry</label>
                     <input name="galery" type="text" class="form-control" id="field8">
                 </div>
-                {{!-- <div class="form-group" style="opacity: 0">
-                    <input name="adopterId" type="text" class="form-control" id="field8">
-                </div> --}}
+                <div class="form-group" style="opacity: 0">
+                    <input name="rescueId" type="text" class="form-control" id="field8" value="{{theRescue._id}}"
+                        placeholder="{{theRescue._id}}">
+                </div>
 
-
-                {{/with}}
                 <button type="submit" class="btn btn-dark btn-block btn-lg">Guardar</button>
 
                 {{#if errorMsg}}
