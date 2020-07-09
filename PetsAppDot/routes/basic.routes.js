@@ -35,7 +35,9 @@ router.get('/contact', (req, res) => res.render('basicRoutes/contact'))
 
 router.get('/list-pets', (req, res, next) => {
     Pet.find()
-        .then((allPets) => res.render('basicRoutes/list-pets', {allPets}))
+        .then((allPets) => res.render('basicRoutes/list-pets', {
+            allPets
+        }))
         .catch(err => next(new Error(err)))
 })
 
@@ -44,29 +46,41 @@ router.get('/list-pets', (req, res, next) => {
 
 router.get('/list-rescue', (req, res, next) => {
     Rescue.find()
-        .then((allRescues) => res.render('basicRoutes/list-rescue', {allRescues}))
+        .then((allRescues) => res.render('basicRoutes/list-rescue', {
+            allRescues
+        }))
         .catch(err => next(new Error(err)))
 })
 
 //en la BBDD de los pets
 router.get('/pet-view/:id', (req, res, next) => {
     Pet.findById(req.params.id)
-       .then((thePet) => res.render('basicRoutes/pet-detail', {thePet}))
-       .catch(err => next(new Error(err)))
+        .then((thePet) => res.render('basicRoutes/pet-detail', {
+            thePet
+        }))
+        .catch(err => next(new Error(err)))
 })
 
 //en la BBDD de los rescues
 router.get('/rescue-view/:id', (req, res, next) => {
     Rescue.findById(req.params.id)
-       .then((theRescue) => res.render('basicRoutes/rescue-detail', {theRescue}))
-       .catch(err => next(new Error(err)))
+        .then((theRescue) => res.render('basicRoutes/rescue-detail', {
+            theRescue
+        }))
+        .catch(err => next(new Error(err)))
 })
 
 
 
 router.get('/pet-list-rescue/:id', (req, res, next) => {
-    Pet.find({}, {rescueId: req.params.id})
-        .then((allPets) => res.render('basicRoutes/list-pets', {allPets}, {rescueId}))
+    Pet.find({}, {
+            rescueId: req.params.id
+        })
+        .then((allPets) => res.render('basicRoutes/list-pets', {
+            allPets
+        }, {
+            rescueId
+        }))
         .catch(err => next(new Error(err)))
 })
 

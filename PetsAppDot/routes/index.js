@@ -16,7 +16,9 @@ module.exports = app => {
     app.use('/email', require('./basic.routes'))
 
 
-// ESTO ES MULTER  app.use('/files', require('./upload.routes)) 
+    // ESTO ES MULTER 
+    //app.use('/', require('./index.routes'))
+    //app.use('/files', require('./upload.routes)) 
     
 
  

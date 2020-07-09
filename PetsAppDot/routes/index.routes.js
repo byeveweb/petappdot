@@ -12,8 +12,6 @@ router.get("/", (req, res) => {
 
 //Aqui German añade en su video:
 
-// 1 añadir modelo picture
-
 // const Picture = require('../models/picture model')
 
 // router.get('/', (req, res, next) => res.render('index'))

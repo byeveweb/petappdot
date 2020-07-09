@@ -1,0 +1,61 @@
+<h1>New Pet</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form action="pet-new?id={{rescueId.id}}" method="POST">
+                {{#with thePet}}
+                <div class="form-group">
+                    <label for="field1">Type Animal</label>
+                    <input name="typeAnimal" type="text" class="form-control" id="field1">
+                </div>
+                <div class="form-group">
+                    <label for="field2">Race</label>
+                    <input name="race" type="text" class="form-control" id="field2">
+                </div>
+                <div class="form-group">
+                    <label for="field3">Genre</label>
+                    <select name="genre" class="form-control" id="role-list">
+                        <option>Gen</option>
+                        <option value="male">Male</option>
+                        <option value="female">female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field4">Age</label>
+                    <input name="age" type="text" class="form-control" id="field4">
+                </div>
+                <div class="form-group">
+                    <label for="field5">Born</label>
+                    <input name="dateBorn" type="text" class="form-control" id="field5">
+                </div>
+                <div class="form-group">
+                    <label for="field6">Description</label>
+                    <input name="description" type="text" class="form-control" id="field6">
+                </div>
+                <div class="form-group">
+                    <label for="field8">Role</label>
+                    <select name="sterilized" class="form-control" id="role-list">
+                        <option>Sterilizado</option>
+                        <option value="true">Si</option>
+                        <option value="false">no</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field8">Galerry</label>
+                    <input name="galey" type="text" class="form-control" id="field8">
+                </div>
+
+
+                {{/with}}
+                <button type="submit" class="btn btn-dark btn-block btn-lg">Guardar</button>
+
+                {{#if errorMsg}}
+                <div id="errorMsg">{{{errorMsg}}}</div>
+                {{/if}}
+            </form>
+
+            <a href="/rescue/profile" class="btn btn-dark">Volver</a>
+
+        </div>
+    </div>
