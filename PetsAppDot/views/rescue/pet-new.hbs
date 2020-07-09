@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <form action="pet-new" method="POST">
+            <form action="pet-new?id={{rescueId.id}}" method="POST">
                 {{#with thePet}}
                 <div class="form-group">
                     <label for="field1">Type Animal</label>
@@ -47,8 +47,6 @@
                 </div>
 
 
-
-
                 {{/with}}
                 <button type="submit" class="btn btn-dark btn-block btn-lg">Guardar</button>
 
@@ -61,15 +59,3 @@
 
         </div>
     </div>
-
-    {{!-- ID: {{_id}}<br>
-        RescueId: {{rescueId}}<br>
-        VirualChip: {{virtualChip}}<br>
-        Type: {{typeAnimal}}<br>
-        Race: {{race}} <br>
-        Genre: {{genre}} <br>
-        Age: {{age}} <br>
-        Born: {{dateBorn}} <br>
-        description: {{description}} <br>
-        Sterilice: {{sterilized}} <br>
-        galery: {{galleryImages}} <br> --}}
