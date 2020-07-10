@@ -17,7 +17,7 @@ const petSchema = new Schema({
     },
     virtualChip: {
         type: String
-    }, // ojo el match: /[A-Z]{2}\d{4}/
+    },
     typeAnimal: {
         type: String
     },
@@ -51,7 +51,8 @@ const petSchema = new Schema({
         type: String
     },
     pathImg: {
-        type: String
+        type: String,
+        default: '/uploads/image.png'
     },
     originalName: {
         type: String

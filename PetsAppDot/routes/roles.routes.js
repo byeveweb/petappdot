@@ -10,26 +10,14 @@ router.get('/profile', checkAuthenticated, (req, res) => res.render('profile', {
     user: req.user
 }))
 
-// Role checker middleware
-const checkRole = rolesToCheck => (req, res, next) => req.isAuthenticated() && rolesToCheck.includes(req.user.role) ? next() : res.redirect('/login')
-
-// Alternativa para enviar a la vista en el renderizado
-// const checkAdmin = () => req.user.role.includes('ADMIN') // Alternativa
-// const checkUser = () => req.user.role.includes('USER') // Alternativa
-// const checkGuest = () => req.user.role.includes('GUEST') // Alternativa
-
-
 // Endpoints
 router.get('/', (req, res) => {
     console.log('¿Está el usuario logeado?', req.isAuthenticated())
     res.render('index')
 })
 
-
-// // Check logged in session 
-// router.get('/profile', checkAuthenticated, (req, res) => res.render('profile', {
-//     user: req.user
-// }))
+// Role checker middleware
+const checkRole = rolesToCheck => (req, res, next) => req.isAuthenticated() && rolesToCheck.includes(req.user.role) ? next() : res.redirect('/login')
 
 
 //Check logged in session & roles

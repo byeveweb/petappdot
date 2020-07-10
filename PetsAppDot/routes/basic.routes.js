@@ -19,7 +19,7 @@ router.get('/list-pets', (req, res, next) => {
     Pet.find({
             adopter: false
         })
-        .populate("Rescue")
+        .populate('rescueId')
         .then((allPets) => res.render('basicRoutes/list-pets', {
             allPets
         }))
@@ -98,7 +98,7 @@ router.post('/send', (req, res) => {
             message,
             info
         }))
-        .catch(error => console.log(error));
+        .catch((err) => next(new Error(err)));
 })
 
 

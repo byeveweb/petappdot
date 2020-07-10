@@ -4,7 +4,9 @@ const multer = require('multer')
 const Pet = require('../models/pet.model')
 
 // File upload settings
-const uploadLocal = multer({dest: './public/uploads/'})
+const uploadLocal = multer({
+    dest: './public/uploads/'
+})
 
 
 // Local upload files routes
@@ -12,7 +14,7 @@ router.get('/upload-local', (req, res, next) => res.render('files/upload-form-lo
 
 router.post('/upload-local', uploadLocal.single('imageFile'), (req, res, next) => {
 
-    
+
     console.log("Multer crea la propiedad 'file' en el objeto req:", req.file)
 
     // Validador
