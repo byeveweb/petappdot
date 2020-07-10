@@ -84,9 +84,6 @@ router.get('/pet-list-rescue/:id', (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
-
-
-
 //router.get('/', (req, res) => res.render('index'))
 
 

@@ -17,7 +17,7 @@ const Pet = require('../models/pet.model')
 router.get('/', (req, res, next) => res.render('index'))
 router.get('/gallery-page', (req, res, next) => { 
 
-  Pet.find()
+  Pet.findById()
   .then(allThePictures => res.render('pages/gallery-page', {allThePictures}))
   .catch(err => next (new Error (err)))
 
